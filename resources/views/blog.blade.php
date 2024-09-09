@@ -52,7 +52,7 @@
 							<div class="col-md-6" data-aos="fade">
 								<article class="blog-post">
 									<div class="post-slider slider-sm rounded">
-										<img loading="lazy" decoding="async" src="{{$blog->thumbnail}}" alt="Post Thumbnail">
+										<img loading="lazy" decoding="async" src="/storage/images/{{$blog->thumbnail}}" alt="Post Thumbnail">
 									</div>
 									<div class="pt-4">
 										<ul class="list-unstyled list-inline mb-0 ">
@@ -60,14 +60,14 @@
 
 											<a href= "{{ route('categoryblogs', $blog->category->slug )}}">
 
-												<li class="list-inline-item me-3"> <p class="mb-1">{{ $blog->category->name}}</p> </li>
+												<li class="list-inline-item me-3"> <p class="mb-1">{{ isset ($blog->category->name) ? $blog->category->name : ' '}}</p> </li>
 											</a>
 
 											<li class="list-inline-item me-3"> <p class="mb-1">{{ $blog -> views}} Views</p> </li>
 
 											<a href= "{{ route('userblog', $blog->user->name )}}">
 
-												<li class="list-inline-item me-3"> <p class="mb-1">{{ $blog->user->name}}</p> </li>
+												<li class="list-inline-item me-3"> <p class="mb-1">{{ isset($blog->user->name) ? $blog->category->name : ' '}}</p> </li>
 											</a>
 
 										</ul>
