@@ -120,11 +120,11 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        $renew_category = request('renew_category');
+        // $renew_category = request('renew_category');
 
         // $category->posts()->update(['category_id'=> 24]);
 
-        $category->blogs()->update(['category_id' => $renew_category]);
+        // $category->blogs()->update(['category_id' => $renew_category]);
 
         return redirect()->route('category.index')->with('danger', 'Category Removed Successfully!');
 

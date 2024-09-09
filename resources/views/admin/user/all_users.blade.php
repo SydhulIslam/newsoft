@@ -97,24 +97,52 @@
 
 
                         <td>
-                          <div class="dropdown">
-                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
-                              <i class="bx bx-dots-vertical-rounded"></i>
-                            </button>
-                            <div class="dropdown-menu">
-                              <a class="dropdown-item btn btn-primary" href="{{route('user.edit', $user->id)}}">
-                                <i class="bx bx-edit-alt me-1"></i> Edit
-                              </a>
 
-                              <form method="post" action="{{route('user.destroy', $user->id)}}">
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <a class="dropdown-item btn btn-primary" href="{{route('user.edit', $user->id)}}">
+                                    <i class="bx bx-edit-alt me-1"></i> Edit
+                                </a>
 
-                                  @csrf
-                                  @method('DELETE')
+                                <form method="post" action="{{route('user.destroy', $user->id)}}">
 
-                                  <button type="submit" class="btn btn-danger">Delete</button>
-                              </form>
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="modal fade" id="smallModal{{$user->id}}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-sm" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel2">Remove Blog : {{$user->name}}</h5>
+
+                                                    <button
+                                                        type="button"
+                                                        class="btn-close"
+                                                        data-bs-dismiss="modal"
+                                                        aria-label="Close"
+                                                    ></button>
+
+                                                </div>
+
+                                                <div class="modal-body">
+                                                    <hr>
+                                                    <p> Are You Sure, You Removed this Blog !! </p>
+                                                    <hr>
+                                                </div>
+
+
+                                                <div class="modal-footer">
+
+                                                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#smallModal{{$user->id}}"> Remove </button>
+                                </form>
                             </div>
-                          </div>
+
                         </td>
 
                       </tr>
