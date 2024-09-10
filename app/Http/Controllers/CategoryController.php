@@ -25,6 +25,8 @@ class CategoryController extends Controller
         ->orWhere('slug','like', '%'.$keyword.'%')
         ->orderBy('id', 'desc') ->paginate(5);
 
+
+
         return view ("admin.category.all_category", compact('keyword','title','categoryes'));
     }
 
@@ -120,11 +122,13 @@ class CategoryController extends Controller
         $category = Category::find($id);
         $category->delete();
 
-        // $renew_category = request('renew_category');
+        $renew_category = request('renew_category');
+
+        // this is for set defolt category
 
         // $category->posts()->update(['category_id'=> 24]);
 
-        // $category->blogs()->update(['category_id' => $renew_category]);
+        $category->blogs()->update(['category_id' => $renew_category]);
 
         return redirect()->route('category.index')->with('danger', 'Category Removed Successfully!');
 

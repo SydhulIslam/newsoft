@@ -124,7 +124,7 @@
 
                                                 <div class="modal-body">
                                                     <hr>
-                                                    <p> Are You Sure, You Removed this Blog !! </p>
+                                                        <p> Are You Sure, You Removed this Blog !! </p>
                                                     <hr>
                                                 </div>
 

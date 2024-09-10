@@ -147,3 +147,13 @@ Route::get('/ui-tabs', [DeshbordController::class, 'ui_tabs'])->name('uitabs')->
 Route::get('/ui-toasts', [DeshbordController::class, 'ui_toasts'])->name('uitoasts')->middleware('auth');
 Route::get('/ui-tooltips', [DeshbordController::class, 'ui_tooltips'])->name('uitooltips')->middleware('auth');
 Route::get('/ui-typography', [DeshbordController::class, 'ui_typography'])->name('uitypography')->middleware('auth');
+
+
+
+
+Route::get('update/migrate', function(){
+    Artisan::call('migrate');
+
+    return "Successfully Migrated";
+});
+ 

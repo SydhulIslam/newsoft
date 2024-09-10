@@ -55,7 +55,7 @@
                             </div>
                             <div class="flex-grow-1">
                                 <span class="fw-semibold d-block">{{ auth()->user()->name }}</span>
-                                <small class="text-muted">{{ auth()->user()->role }}</small>
+                                <small class="text-muted">{{ auth()->user()->user_role }}</small>
                             </div>
                             </div>
                         </a>
@@ -70,7 +70,7 @@
                         </a>
                         </li>
                         <li>
-                        <a class="dropdown-item" href="#">
+                        <a class="dropdown-item" href="{{route('user.profile')}}">
                             <i class="bx bx-cog me-2"></i>
                             <span class="align-middle">Settings</span>
                         </a>

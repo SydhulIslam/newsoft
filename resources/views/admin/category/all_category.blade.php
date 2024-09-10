@@ -114,35 +114,35 @@
                                             </a>
 
                                             <form method="post" action="{{route('category.destroy', $category->id)}}">
-
                                                 @csrf
                                                 @method('DELETE')
-
-
                                                 <div class="modal fade" id="smallModal{{$category->id}}" tabindex="-1" aria-hidden="true">
                                                     <div class="modal-dialog modal-sm" role="document">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel2">Remove Categori : {{$category->name}}</h5>
-
+                                                                <h5 class="modal-title" id="exampleModalLabel2">Remove Category : {{$category->name}}</h5>
                                                                 <button
                                                                     type="button"
                                                                     class="btn-close"
                                                                     data-bs-dismiss="modal"
                                                                     aria-label="Close"
                                                                 ></button>
-
                                                             </div>
-
                                                             <div class="modal-body">
+                                                                <p> Assign new Category for Blogs of this Category </p>
+
+                                                                <select class="form-select" name= "renew_category" id="exampleFormControlSelect1" aria-label="Default select example">
+                                                                    @foreach(App\Models\Category::where('id', '!=', $category->id)->get() as $cat)
+                                                                        <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                                                    @endforeach
+
+                                                                </select>
+
                                                                 <hr>
                                                                 <p> Are You Sure, You Removed this Category !! </p>
                                                                 <hr>
                                                             </div>
-
-
                                                             <div class="modal-footer">
-
                                                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"> Close </button>
                                                             <button type="submit" class="btn btn-danger">Delete</button>
                                                             </div>
@@ -151,8 +151,6 @@
                                                 </div>
 
                                                 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#smallModal{{$category->id}}"> Remove </button>
-
-
                                             </form>
 
 

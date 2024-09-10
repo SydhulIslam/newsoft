@@ -58,16 +58,16 @@
 										<ul class="list-unstyled list-inline mb-0 ">
 											<li class="list-inline-item me-3"> <p class="mb-1">{{ date('d F', strtotime($blog->created_at)) }}</p> </li>
 
-											<a href= "{{ route('categoryblogs', $blog->category->slug )}}">
+											<a href= "/category/{{ isset ($blog->category->name) ? $blog->category->name : ' '}}">
 
 												<li class="list-inline-item me-3"> <p class="mb-1">{{ isset ($blog->category->name) ? $blog->category->name : ' '}}</p> </li>
 											</a>
 
 											<li class="list-inline-item me-3"> <p class="mb-1">{{ $blog -> views}} Views</p> </li>
 
-											<a href= "{{ route('userblog', $blog->user->name )}}">
+											<a href= "/user/{{ isset($blog->user->name) ? $blog->user->name : ' '}}">
 
-												<li class="list-inline-item me-3"> <p class="mb-1">{{ isset($blog->user->name) ? $blog->category->name : ' '}}</p> </li>
+												<li class="list-inline-item me-3"> <p class="mb-1">{{ isset($blog->user->name) ? $blog->user->name : ' '}}</p> </li>
 											</a>
 
 										</ul>
