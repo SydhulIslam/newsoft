@@ -76,13 +76,19 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 
     Route::resources([
         'blog' => BlogController::class,
-        'category' => CategoryController::class,
-        'user' => UserController::class
     ]);
 
+    Route::group(['middleware'=>'is_admin'], function(){
+
+        Route::resources([
+            'category' => CategoryController::class,
+            'user' => UserController::class
+        ]);
+
+    });
+
+
     Route::get('/my-profile', [UserController::class, 'my_profile'])->name('user.profile');
-
-
 
 });
 
@@ -156,4 +162,3 @@ Route::get('update/migrate', function(){
 
     return "Successfully Migrated";
 });
- 

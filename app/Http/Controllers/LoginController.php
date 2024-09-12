@@ -43,7 +43,6 @@ class LoginController extends Controller
 
         $user->user_photo = $photo;
         $user->password = bcrypt( $request->password );
-        $user->user_role = 'Editor';
 
         if( $user->save() )
         {

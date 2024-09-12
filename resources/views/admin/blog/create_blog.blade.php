@@ -82,7 +82,7 @@
                             @enderror
 
                           <div class="input-group input-group-merge">
-                            <textarea id="basic-icon-default-message" name= "excerpt" rows="3" class="form-control" placeholder="Post Content" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{ old('excerpt')}}  </textarea>
+                            <textarea id="basic-icon-default-message" name= "excerpt" rows="3" class="form-control" placeholder="Post Content" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{old('excerpt')}}  </textarea>
                           </div>
                         </div>
 
@@ -94,7 +94,7 @@
                             @enderror
 
                           <div class="input-group input-group-merge">
-                            <textarea id="basic-icon-default-message" name= "content" rows="5" class="form-control" placeholder="Post Content" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{ old('content')}} </textarea>
+                            <textarea id="basic-icon-default-message" name= "content" rows="5" class="form-control" placeholder="Post Content" aria-label="Hi, Do you have a moment to talk Joe?" aria-describedby="basic-icon-default-message2">{{old('content')}} </textarea>
                           </div>
                         </div>
 
