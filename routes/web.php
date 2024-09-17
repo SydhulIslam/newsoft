@@ -8,6 +8,7 @@ use App\Http\Controllers\DeshbordController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -66,6 +67,39 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout')->midd
 ///-------------------------------////////////----------------------///////////////
 
 
+// ////////////////////////////////////////////////////////
+
+// // Customer  Login and Register Route
+
+Route::group([
+    'prefix' => 'customer',
+    'as'     => 'customer.'
+],function(){
+
+    Route::get('/registion', [CustomerController::class, 'registion_get'])->name('registion_get')->middleware('guest');
+    Route::post('/registion', [CustomerController::class, 'registion_post'])->name('registion_post');
+
+    Route::get('/login', [CustomerController::class, 'login_get'])->name('login')->middleware('guest');
+    Route::post('/login', [CustomerController::class, 'login_post'])->name('login_post');
+
+    Route::group([
+        'middleware'=>'is_customer'
+    ], function(){
+
+        Route::get('/deshbord', [CustomerController::class, 'deshbord'])->name('deshbord');
+    });
+
+
+    Route::post('/logout', [CustomerController::class, 'logout'])->name('logout');
+
+
+});
+
+
+
+///-------------------------------////////////----------------------///////////////
+
+
 
 ////////////////////////////////////////////////////////////
 // Deshbord function Route [[[[[  BlogController  ]]]]]
@@ -91,16 +125,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
     Route::get('/my-profile', [UserController::class, 'my_profile'])->name('user.profile');
 
 });
-
-
-
-
-
-
-
-
-
-
 
 
 // Deshbord Route

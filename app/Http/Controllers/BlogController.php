@@ -8,6 +8,8 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Gate;
+
 class BlogController extends Controller
 {
     /**
@@ -98,6 +100,8 @@ class BlogController extends Controller
 
     }
 
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -106,6 +110,19 @@ class BlogController extends Controller
      */
     public function edit($id)
     {
+
+        $blog = Blog::find($id);
+
+        // if( $blog->user_id != auth()->user()->id){
+        //     abort(403);
+        // }
+
+
+        if(Gate::denies('blog_edit', $blog)){
+            abort(403);
+        }
+
+
         $blog = Blog::find($id);
         $categories = Category::all();
         $cat = $blog->category;
@@ -113,6 +130,9 @@ class BlogController extends Controller
         // dd($cat);
         return view('admin.blog.edit_blog', compact('blog', 'categories', 'cat'));
     }
+
+
+
 
     /**
      * Update the specified resource in storage.
@@ -123,12 +143,7 @@ class BlogController extends Controller
      */
     public function update(Request $request,  $id)
     {
-
-
         $blog = Blog::find($id);
-
-
-
         $blog->title = $request->title;
 
         $blog->slug = implode( '-' , explode ( ' ', $request->title )) . '-' . time() ;
@@ -141,8 +156,6 @@ class BlogController extends Controller
 
             $blog->thumbnail = $thumbnail_name ;
         }
-
-
 
         $blog->excerpt      = $request->excerpt;
         $blog->content      = $request->content;
