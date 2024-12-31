@@ -69,21 +69,68 @@
                         <div data-i18n="Layouts">User</div>
                     </a>
 
+
+
+
+
+                     {{-- use Gate --}}
+
+
+                     {{-- @can('isAdmin')
+                        <li class="menu-item">
+                            <a href="{{route('user.create')}}" class="menu-link">
+                                <div data-i18n="Without navbar">Create User</div>
+                            </a>
+                        </li>
+
+                        <li class="menu-item">
+                            <a href="{{route('user.index')}}" class="menu-link">
+                                <div data-i18n="Without menu">All User</div>
+                            </a>
+                        </li>
+                     @endcan --}}
+
+                    {{-- @if (Gate::allows('isAdmin'))
+
+                        <li class="menu-item">
+                            <a href="{{route('user.create')}}" class="menu-link">
+                                <div data-i18n="Without navbar">Create User</div>
+                            </a>
+                        </li>
+
+                        <li class="menu-item">
+                            <a href="{{route('user.index')}}" class="menu-link">
+                                <div data-i18n="Without menu">All User</div>
+                            </a>
+                        </li>
+
+                    @endif --}}
+
+
+
+
+
+
+
                     <ul class="menu-sub">
                         <li class="menu-item">
-                        <a href="{{route('user.index')}}" class="menu-link">
-                            <div data-i18n="Without menu">All User</div>
-                        </a>
+                            <a href="{{route('user.index')}}" class="menu-link">
+                                <div data-i18n="Without menu">All User</div>
+                            </a>
                         </li>
+
+
                         <li class="menu-item">
-                        <a href="{{route('user.create')}}" class="menu-link">
-                            <div data-i18n="Without navbar">Create User</div>
-                        </a>
+                            <a href="{{route('user.create')}}" class="menu-link">
+                                <div data-i18n="Without navbar">Create User</div>
+                            </a>
                         </li>
+
+
                         <li class="menu-item">
-                        <a href="{{route('user.profile')}}" class="menu-link">
-                            <div data-i18n="Container">User Profile</div>
-                        </a>
+                            <a href="{{route('user.profile')}}" class="menu-link">
+                                <div data-i18n="Container">User Profile</div>
+                            </a>
                         </li>
                     </ul>
                 </li>

@@ -50,9 +50,6 @@ Route::get('user/{user:name}', [WebController::class, 'user_blog'])->name('userb
 // });
 
 
-
-
-
 // ////////////////////////////////////////////////////////
 // // Login and Register Route
 
@@ -130,6 +127,18 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
 // Deshbord Route
 /////////////////////////////////////////
 
+
+
+///// Use Gates
+
+// Route::get('/deshbord', [DeshbordController::class, 'index'])->name('deshbord')->middleware( 'can:isAdmin');
+// Route::get('/deshbord', [DeshbordController::class, 'index'])->name('deshbord')->can( 'isAdmin');
+
+
+
+
+//////////////////////////
+
 Route::group(['prefix'=>'deshbord', 'middleware'=>'auth'], Function(){
 
     Route::resource('deshbord', DeshbordController::class);
@@ -138,7 +147,7 @@ Route::group(['prefix'=>'deshbord', 'middleware'=>'auth'], Function(){
 
 
 
-Route::get('/cards_basic', [DeshbordController::class, 'cards'])->name('cards')->middleware('auth');
+Route::get('/cards_basic', [DeshbordController::class, 'cards'])->name('cards')->middleware( 'auth');
 Route::get('/perfect-scrollbar', [DeshbordController::class, 'perfect_scrollbar'])->name('perfectscrollbar')->middleware('auth');
 Route::get('/text-divider', [DeshbordController::class, 'text_divider'])->name('textdivider')->middleware('auth');
 Route::get('/layouts-horizontal', [DeshbordController::class, 'layouts_horizontal'])->name('layoutshorizontal')->middleware('auth');

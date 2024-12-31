@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\Facades\Gate;
+use App\Models\User;
 use App\Policies\BlogPolicy;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -26,6 +27,19 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('blog_edit', [BlogPolicy::class, 'blog_edit']);
+        Gate::define('blog-edit', [BlogPolicy::class, 'blog_edit']);
+
+
+        ////////  Use Gates
+
+        // Gate::define('update-blog', [BlogPolicy::class, 'update_blog']);
+
+        //////////////////////////
+
+        // Gate::define('isAdmin',function(User $user){
+        //     return $user->is_admin === '1';
+        // });
+
+
     }
 }

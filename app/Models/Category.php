@@ -11,6 +11,8 @@ class Category extends Model
 
     use HasFactory;
 
+    # Category hasMany Blogs
+    # Many Blogs inside in a Category
     public function blogs(){
         return $this->hasMany(Blog::class);
     }

@@ -118,9 +118,46 @@ class BlogController extends Controller
         // }
 
 
-        if(Gate::denies('blog_edit', $blog)){
+        if(Gate::denies('blog-edit', $blog)){
             abort(403);
         }
+
+
+
+
+
+////////  Use Gates
+
+///////////////////////
+
+        // Gate::authorize('isAdmin');
+        // return "you are a admin";
+
+
+///////////////////////
+        // if (Gate::allow('isAdmin')){
+        //     return "you are a admin";
+        // }else{
+        //     return "access Denied";
+        // }
+
+//////////////////////////
+        // The user can create the post use check
+        // if!(Gate::check('blog_edit', $blog)){
+        //     abort(403);
+        // }
+////////////////////////////
+        // The action is authorized
+        // Gate::authorize('blog_edit', $blog);
+
+        // this is inspect gate
+
+        // $inspect = Gate::inspect('blog_edit', $blog);
+        // if ($inspect->allowed()) {
+        //     // The action is authorized...
+        // } else {
+        //     echo $inspect->message('You have no permition.');
+        // }
 
 
         $blog = Blog::find($id);
@@ -143,6 +180,18 @@ class BlogController extends Controller
      */
     public function update(Request $request,  $id)
     {
+
+        // The user can update the blog
+        // if (Gate::forUser($user)->allows('update-blog', $blog)) {
+        // }
+
+        // The user can't update the blog
+        // if (Gate::forUser($user)->denies('update-blog', $blog)) {
+        // }
+
+
+
+
         $blog = Blog::find($id);
         $blog->title = $request->title;
 
